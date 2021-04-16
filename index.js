@@ -52,17 +52,38 @@ menu = () => {
                     return "Please enter a number."
                 }
             },
+            {
+                type: "list",
+                name: "teamMember",
+                message: "Would you like to add another team member?",
+                choices: ['Engineer', 'Intern', 'Employee', 'I do not need to add anyone else'],
+                validate: choices => {
+                    if(choices == 'Engineer'){
+                        createEngineer();
+                    } 
+                    else if(choices == 'Intern'){
+                        createIntern();
+                    }
+                    else if(choices == 'Employee'){
+                        createEmployee();
+                    }
+                    // else if(choices == 'I do not need to add anyone else'){
+                        
+                    //     writeToFile();
+                    // }
+                }
+            },
 
-        ]).then((data) => {
+        ]).then((answers) => {
             const manager = new Manager(
-                data.managerName, 
-                data.managerId,
-                data.managerEmail,
-                data.managerOfficeNumber
+                answers.name, 
+                answers.id,
+                answers.email,
+                answers.officeNumber
                 );
             console.log(manager);
-            teamArray.push(manager)
-            createTeam();
+            // teamArray.push(manager)
+            // createTeam();
         });
     }
 
@@ -109,8 +130,8 @@ menu = () => {
                 data.employeeEmail,
                 );
             console.log(employee);
-            teamArray.push(employee)
-            createTeam();
+            // teamArray.push(employee)
+            // createTeam();
         });
     }
     
@@ -161,16 +182,16 @@ menu = () => {
                 }
             },
 
-        ]).then((data) => {
-            const intern = new intern(
-                data.internName, 
-                data.internId,
-                data.internEmail,
-                data.internSchool,
+        ]).then((answers) => {
+            const manager = new Intern(
+                answers.name, 
+                answers.id,
+                answers.email,
+                answers.officeNumber
                 );
-            console.log(intern);
-            teamArray.push(intern)
-            createTeam();
+            console.log(manager);
+            // teamArray.push(intern)
+            // createTeam();
         });
     }
 
@@ -221,22 +242,22 @@ menu = () => {
                 }
             },
 
-        ]).then((data) => {
-            const intern = new intern(
-                data.engineerName, 
-                data.engineerId,
-                data.engineerEmail,
-                data.engineerGithub,
+        ]).then((answers) => {
+            const manager = new Engineer(
+                answers.name, 
+                answers.id,
+                answers.email,
+                answers.officeNumber
                 );
-            console.log(intern);
-            teamArray.push(intern)
-            createTeam();
+            console.log(manager);
+            // teamArray.push(intern)
+            // createTeam();
         });
     }
 
-    createEngineer();
-    createIntern();
-    createEmployee();
+    // createEngineer();
+    // createIntern();
+    // createEmployee();
     createManager();
 
 }
