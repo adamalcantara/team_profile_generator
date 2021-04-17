@@ -52,6 +52,12 @@ const createManager = () => {
                 return "Please enter a number."
             }
         },
+        {
+            type: "list",
+            name: "teamMember",
+            message: "Would you like to add another team member?",
+            choices: ['Manager', 'Engineer', 'Intern', 'I do not need to add anyone else'],
+        },
 
     ]).then((answers) => {
         const manager = new Manager(
@@ -60,9 +66,21 @@ const createManager = () => {
             answers.email,
             answers.officeNumber
             );
-        //check which answer they chose for "choices"
-        //write an while loop for the choices so that "if answer was engineer, call the engineer function", etc
         teamArray.push(manager)
+        let willContinue = answers.teamMember !== 'I do not need to add anyone else';
+        let employeeType = answers.teamMember;
+        while (willContinue) {
+            if (employeeType === 'Engineer') {
+                createEngineer();
+            }
+            else if (employeeType === 'Intern') {
+                createIntern();
+            }
+            else if (employeeType === 'Manager'){
+                createManager();
+            }
+            return
+        }
         console.log(teamArray);
         
         // createTeam();
@@ -123,8 +141,8 @@ const createIntern = () => {
             answers.email,
             answers.school
             );
-        console.log(intern);
-        // teamArray.push(intern)
+            teamArray.push(intern)
+            console.log(teamArray);
         // createTeam();
     });
 }
@@ -183,40 +201,43 @@ const createEngineer = () => {
             answers.email,
             answers.github
             );
-        console.log(engineer);
-        // teamArray.push(intern)
+            teamArray.push(engineer)
+            console.log(teamArray);
         // createTeam();
     });
 }
 
 const init = () => {
     createManager();
-    inquirer.prompt([
-        {
-            type: "list",
-            name: "teamMember",
-            message: "Would you like to add another team member?",
-            choices: ['Engineer', 'Intern', 'I do not need to add anyone else'],
-        },
+    // inquirer.prompt([
+    //     {
+    //         type: "list",
+    //         name: "teamMember",
+    //         message: "Would you like to add another team member?",
+    //         choices: ['Manager', 'Engineer', 'Intern', 'I do not need to add anyone else'],
+    //     },
         
-    ]).then((answers) => {
-        let willContinue = answers.teamMember !== 'I do not need to add anyone else';
-        let employeeType = answers.teamMember;
-        while (willContinue) {
-            if (employeeType === 'Engineer') {
-                createEngineer();
-            }
-            else if (employeeType === 'Intern') {
-                createIntern();
-            }
+    // ]).then((answers) => {
+    //     let willContinue = answers.teamMember !== 'I do not need to add anyone else';
+    //     let employeeType = answers.teamMember;
+    //     while (willContinue) {
+    //         if (employeeType === 'Engineer') {
+    //             createEngineer();
+    //         }
+    //         else if (employeeType === 'Intern') {
+    //             createIntern();
+    //         }
+    //         else if (employeeType === 'Manager'){
+    //             createManager();
+    //         }
 
-            // another inquirer.prompt() asking do you want to add another user? if so, what kind?
-            // update willContinue  and employeeType based on response
+    //         // another inquirer.prompt() asking do you want to add another user? if so, what kind?
+    //         // update willContinue  and employeeType based on response
 
-        }
+    //     }
 
-        // print your array into an html file
-    })
+    //     // print your array into an html file
+    // })
     
 
 }
