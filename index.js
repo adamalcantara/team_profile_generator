@@ -35,10 +35,10 @@ menu = () => {
                 name: "email",
                 message: "What is the team manager's email?",
                 validate: data => {
-                    if(data !== ""){
+                    if(data.match(/\S+@\S+\.\S+/)) {
                         return true
-                    } 
-                    return "Please enter an email."
+                    }
+                    return "Please enter a valid email address."
                 }
             },
             {
@@ -57,21 +57,6 @@ menu = () => {
                 name: "teamMember",
                 message: "Would you like to add another team member?",
                 choices: ['Engineer', 'Intern', 'Employee', 'I do not need to add anyone else'],
-                validate: choices => {
-                    if(choices == 'Engineer'){
-                        createEngineer();
-                    } 
-                    else if(choices == 'Intern'){
-                        createIntern();
-                    }
-                    else if(choices == 'Employee'){
-                        createEmployee();
-                    }
-                    // else if(choices == 'I do not need to add anyone else'){
-                        
-                    //     writeToFile();
-                    // }
-                }
             },
 
         ]).then((answers) => {
@@ -81,6 +66,8 @@ menu = () => {
                 answers.email,
                 answers.officeNumber
                 );
+            //check which answer they chose for "choices"
+            //write an if statement for the choices so that "if answer was engineer, call the engineer function", etc
             console.log(manager);
             // teamArray.push(manager)
             // createTeam();
@@ -116,10 +103,10 @@ menu = () => {
                 name: "email",
                 message: "What is the employee's email?",
                 validate: data => {
-                    if(data !== ""){
+                    if(data.match(/\S+@\S+\.\S+/)) {
                         return true
-                    } 
-                    return "Please enter an email."
+                    }
+                    return "Please enter a valid email address."
                 }
             },
 
@@ -164,10 +151,10 @@ menu = () => {
                 name: "email",
                 message: "What is the intern's email?",
                 validate: data => {
-                    if(data !== ""){
+                    if(data.match(/\S+@\S+\.\S+/)) {
                         return true
-                    } 
-                    return "Please enter an email."
+                    }
+                    return "Please enter a valid email address."
                 }
             },
             {
@@ -224,10 +211,10 @@ menu = () => {
                 name: "email",
                 message: "What is the Engineer's email?",
                 validate: data => {
-                    if(data !== ""){
+                    if(data.match(/\S+@\S+\.\S+/)) {
                         return true
-                    } 
-                    return "Please enter an email."
+                    }
+                    return "Please enter a valid email address."
                 }
             },
             {
