@@ -133,6 +133,12 @@ const createIntern = () => {
                 return "Please enter a school."
             }
         },
+        {
+            type: "list",
+            name: "teamMember",
+            message: "Would you like to add another team member?",
+            choices: ['Manager', 'Engineer', 'Intern', 'I do not need to add anyone else'],
+        },
 
     ]).then((answers) => {
         const intern = new Intern(
@@ -142,6 +148,20 @@ const createIntern = () => {
             answers.school
             );
             teamArray.push(intern)
+            let willContinue = answers.teamMember !== 'I do not need to add anyone else';
+            let employeeType = answers.teamMember;
+            while (willContinue) {
+                if (employeeType === 'Engineer') {
+                createEngineer();
+            }
+                else if (employeeType === 'Intern') {
+                createIntern();
+            }
+                else if (employeeType === 'Manager'){
+                createManager();
+            }
+            return
+        }
             console.log(teamArray);
         // createTeam();
     });
@@ -193,6 +213,12 @@ const createEngineer = () => {
                 return "Please enter a username."
             }
         },
+        {
+            type: "list",
+            name: "teamMember",
+            message: "Would you like to add another team member?",
+            choices: ['Manager', 'Engineer', 'Intern', 'I do not need to add anyone else'],
+        },
 
     ]).then((answers) => {
         const engineer = new Engineer(
@@ -202,6 +228,20 @@ const createEngineer = () => {
             answers.github
             );
             teamArray.push(engineer)
+        let willContinue = answers.teamMember !== 'I do not need to add anyone else';
+        let employeeType = answers.teamMember;
+        while (willContinue) {
+            if (employeeType === 'Engineer') {
+                createEngineer();
+            }
+            else if (employeeType === 'Intern') {
+                createIntern();
+            }
+            else if (employeeType === 'Manager'){
+                createManager();
+            }
+            return
+        }
             console.log(teamArray);
         // createTeam();
     });
