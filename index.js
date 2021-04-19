@@ -5,6 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const teamArray = [];
+const generateHTML = requre("./generatehtml")
 
 const createManager = () => {
     inquirer.prompt([
@@ -69,6 +70,12 @@ const createManager = () => {
         teamArray.push(manager)
         let willContinue = answers.teamMember !== 'I do not need to add anyone else';
         let employeeType = answers.teamMember;
+
+        if (!willContinue) {
+            writeHTML();
+            return;
+        }
+        
         while (willContinue) {
             if (employeeType === 'Engineer') {
                 createEngineer();
@@ -150,6 +157,12 @@ const createIntern = () => {
             teamArray.push(intern)
             let willContinue = answers.teamMember !== 'I do not need to add anyone else';
             let employeeType = answers.teamMember;
+
+            if (!willContinue) {
+                writeHTML();
+                return;
+            }
+
             while (willContinue) {
                 if (employeeType === 'Engineer') {
                 createEngineer();
@@ -230,6 +243,12 @@ const createEngineer = () => {
             teamArray.push(engineer)
         let willContinue = answers.teamMember !== 'I do not need to add anyone else';
         let employeeType = answers.teamMember;
+
+        if (!willContinue) {
+            writeHTML();
+            return;
+        }
+
         while (willContinue) {
             if (employeeType === 'Engineer') {
                 createEngineer();
@@ -249,38 +268,13 @@ const createEngineer = () => {
 
 const init = () => {
     createManager();
-    // inquirer.prompt([
-    //     {
-    //         type: "list",
-    //         name: "teamMember",
-    //         message: "Would you like to add another team member?",
-    //         choices: ['Manager', 'Engineer', 'Intern', 'I do not need to add anyone else'],
-    //     },
-        
-    // ]).then((answers) => {
-    //     let willContinue = answers.teamMember !== 'I do not need to add anyone else';
-    //     let employeeType = answers.teamMember;
-    //     while (willContinue) {
-    //         if (employeeType === 'Engineer') {
-    //             createEngineer();
-    //         }
-    //         else if (employeeType === 'Intern') {
-    //             createIntern();
-    //         }
-    //         else if (employeeType === 'Manager'){
-    //             createManager();
-    //         }
-
-    //         // another inquirer.prompt() asking do you want to add another user? if so, what kind?
-    //         // update willContinue  and employeeType based on response
-
-    //     }
-
-    //     // print your array into an html file
-    // })
-    
 
 }
 
 
 init();
+
+const writeHTML = () => {
+    fs.writeFile('index.html', generateHTML(teamArray), (err) =>
+    err ? console.log(err) : console.log('Successfully created index.html'))
+}
