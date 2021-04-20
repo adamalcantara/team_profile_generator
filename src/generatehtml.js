@@ -55,9 +55,9 @@ const managerCreate = (manager) => {
        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-tasks"></i>${manager.getRole()}</h6>
        </div>
        <ul class="list-group list-group-flush">
-           <li class="list-group-item">${manager.getId()}</li>
-           <li class="list-group-item">${manager.getEmail()}</li>
-           <li class="list-group-item">${manager.getOfficeNumber()}</li>
+           <li class="list-group-item">ID No.: ${manager.getId()}</li>
+           <li class="list-group-item">Email: ${manager.getEmail()}</li>
+           <li class="list-group-item">Office No.: ${manager.getOfficeNumber()}</li>
        </ul>
    </div>
 </div>
@@ -73,9 +73,9 @@ const engineerCreate = (engineer) => {
        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-cogs"></i>${engineer.getRole()}</h6>
        </div>
        <ul class="list-group list-group-flush">
-           <li class="list-group-item">${engineer.getId()}</li>
-           <li class="list-group-item">${engineer.getEmail()}</li>
-           <li class="list-group-item">${engineer.getGitHub()}</li>
+           <li class="list-group-item">ID No.: ${engineer.getId()}</li>
+           <li class="list-group-item">Email: ${engineer.getEmail()}</li>
+           <li class="list-group-item">GitHub: ${engineer.getGitHub()}</li>
        </ul>
    </div>
 </div>
@@ -91,9 +91,9 @@ const internCreate = (intern) => {
        <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-graduation-cap"></i>${intern.getRole()}</h6>
        </div>
        <ul class="list-group list-group-flush">
-           <li class="list-group-item">${intern.getId()}</li>
-           <li class="list-group-item">${intern.getEmail()}</li>
-           <li class="list-group-item">${intern.getSchool()}</li>
+           <li class="list-group-item">ID No.: ${intern.getId()}</li>
+           <li class="list-group-item">Email: ${intern.getEmail()}</li>
+           <li class="list-group-item">School: ${intern.getSchool()}</li>
        </ul>
    </div>
 </div>

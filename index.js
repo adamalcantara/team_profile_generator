@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const teamArray = [];
-const generateHTML = require("./generatehtml")
+const generateHTML = require("./src/generatehtml")
 
 const createManager = () => {
     inquirer.prompt([

@@ -11,12 +11,12 @@ describe("Intern", () => {
     });
 
     test ("Can get role with the getRole function", () => {
-        const intern = new Intern("Intern");
+        const intern = new Intern("Employee", 123, "employee@job.com", "schoolname");
         expect(intern.getRole()).toBe("Intern");
     })
 
     test ("can get school with function", () => {
-        const intern = new Intern("schoolname");
+        const intern = new Intern("Employee", 123, "employee@job.com", "schoolname");
         expect(intern.getSchool()).toBe(intern.school);
     })
 })
