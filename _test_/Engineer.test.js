@@ -12,11 +12,11 @@ describe("Engineer", () => {
 
     test ("Can get role with the getRole function", () => {
         const engineer = new Engineer("Engineer");
-        expect(engineer.getRole()).toBe("Engineer");
+        expect(engineer.getRole()).toBe("Employee", 123, "employee@job.com", "githubusername");
     })
 
     test ("can get GitHub username with function", () => {
-        const engineer = new Engineer("githubusername");
+        const engineer = new Engineer("Employee", 123, "employee@job.com", "githubusername");
         expect(engineer.getGitHub()).toBe(engineer.gitHub);
     })
 })

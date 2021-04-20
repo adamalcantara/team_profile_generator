@@ -4,7 +4,8 @@ let html = `<!DOCTYPE html>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">    
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">  
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous"/>  
     <link rel="stylesheet" href="./style.css">
     <title>Team Profile Generator</title>
 </head>
@@ -45,3 +46,58 @@ const generateHTML = (arr) => {
 
 }
 
+const managerCreate = (manager) => {
+    return html+=
+    `<div class="card" style="width: 20rem;">
+    <div class="card-body">
+       <div class="card-header">
+       <h5 class="card-title">${manager.getName()}</h5>
+       <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-tasks"></i>${manager.getRole()}</h6>
+       </div>
+       <ul class="list-group list-group-flush">
+           <li class="list-group-item">${manager.getId()}</li>
+           <li class="list-group-item">${manager.getEmail()}</li>
+           <li class="list-group-item">${manager.getOfficeNumber()}</li>
+       </ul>
+   </div>
+</div>
+`
+}
+
+const engineerCreate = (engineer) => {
+    return html+=
+    `<div class="card" style="width: 20rem;">
+    <div class="card-body">
+       <div class="card-header">
+       <h5 class="card-title">${engineer.getName()}</h5>
+       <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-cogs"></i>${engineer.getRole()}</h6>
+       </div>
+       <ul class="list-group list-group-flush">
+           <li class="list-group-item">${engineer.getId()}</li>
+           <li class="list-group-item">${engineer.getEmail()}</li>
+           <li class="list-group-item">${engineer.getGitHub()}</li>
+       </ul>
+   </div>
+</div>
+`
+}
+
+const internCreate = (intern) => {
+    return html+=
+    `<div class="card" style="width: 20rem;">
+    <div class="card-body">
+       <div class="card-header">
+       <h5 class="card-title">${intern.getName()}</h5>
+       <h6 class="card-subtitle mb-2 text-muted"><i class="fas fa-graduation-cap"></i>${intern.getRole()}</h6>
+       </div>
+       <ul class="list-group list-group-flush">
+           <li class="list-group-item">${intern.getId()}</li>
+           <li class="list-group-item">${intern.getEmail()}</li>
+           <li class="list-group-item">${intern.getSchool()}</li>
+       </ul>
+   </div>
+</div>
+`
+}
+
+module.exports = generateHTML;

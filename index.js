@@ -5,7 +5,7 @@ const inquirer = require("inquirer");
 const path = require("path");
 const fs = require("fs");
 const teamArray = [];
-const generateHTML = requre("./generatehtml")
+const generateHTML = require("./generatehtml")
 
 const createManager = () => {
     inquirer.prompt([
@@ -75,7 +75,7 @@ const createManager = () => {
             writeHTML();
             return;
         }
-        
+
         while (willContinue) {
             if (employeeType === 'Engineer') {
                 createEngineer();
@@ -266,13 +266,7 @@ const createEngineer = () => {
     });
 }
 
-const init = () => {
-    createManager();
-
-}
-
-
-init();
+createManager();
 
 const writeHTML = () => {
     fs.writeFile('index.html', generateHTML(teamArray), (err) =>
